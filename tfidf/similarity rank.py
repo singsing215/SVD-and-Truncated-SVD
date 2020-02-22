@@ -1,6 +1,7 @@
 import numpy as np
 import xlrd
 
+
 data = xlrd.open_workbook('C:\\Users\\SingSing\\Documents\\GitHub\\SVD-and-Truncated-SVD\\tfidf\\tfidf_result.xlsx')
 table = data.sheets()[0]
 
