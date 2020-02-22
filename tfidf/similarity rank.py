@@ -1,6 +1,5 @@
 import numpy as np
 import xlrd
-from scipy.linalg import svd 
 
 data = xlrd.open_workbook('C:\\Users\\SingSing\\Documents\\GitHub\\SVD-and-Truncated-SVD\\tfidf\\tfidf_result.xlsx')
 table = data.sheets()[0]
@@ -18,13 +17,10 @@ for x in range(start,end):
         values.append(row[i])
     list_values.append(values)
 X=np.array(list_values)
-print('\n X = \n', X[0:4]) 
-print('\n q = \n', X[4:5]) 
+x=X[0:4]
+q=X[4:5]
+#print('\n X = \n', x) 
+#print('\n q = \n', q) 
 
-U, s, VT = svd(X)
-# Truncated SVD: to 2 dim 
-k=2
-recovered_X= U[:,:k].dot(np.diag(s)[:k,:k]).dot(VT [:k, :])
-print("\n X_%d = \n" %k , recovered_X[0:4]) 
-print("\n q_%d = \n" %k , recovered_X[4:5]) 
-
+print("Dot product similarity =\n",np.dot(x, q.transpose()))
+print("Cosine similarity =\n",np.dot(x, q.transpose())/(np.linalg.norm(x)*np.linalg.norm(q.transpose())))
