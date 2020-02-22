@@ -1,5 +1,5 @@
 import numpy as np 
-import matplotlib.pyplot as pt
+#import matplotlib.pyplot as pt
 from scipy.linalg import svd 
 
 X = np.array([[1, 2, 1, 2], [0, 1, 0, 1], [1, 0, 1, 0], [1, 2, 3, 4] ]) # SVD: X = U*s*V^T 
