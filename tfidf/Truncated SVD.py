@@ -1,6 +1,9 @@
 import numpy as np
 import xlrd
 from scipy.linalg import svd 
+import pandas as pd
+from pandas import ExcelWriter
+
 
 
 data = xlrd.open_workbook('C:\\Users\\SingSing\\Documents\\GitHub\\SVD-and-Truncated-SVD\\tfidf\\tfidf_result.xlsx')
@@ -29,3 +32,9 @@ recovered_X= U[:,:k].dot(np.diag(s)[:k,:k]).dot(VT [:k, :])
 print("\n X_%d = \n" %k , recovered_X[0:4]) 
 print("\n q_%d = \n" %k , recovered_X[4:5]) 
 
+
+# output
+writer = pd.ExcelWriter('Truncated SVD_result.xlsx')
+pd.DataFrame(recovered_X).to_excel(writer, 'Truncated SVD')
+writer.save()
+print('File Output Success')
